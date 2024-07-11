@@ -8,11 +8,11 @@
         <h3>{{ item.brand }} | {{ item.name }} {{ item.type }}</h3>
       </li>
       <li>
-        <h2>from<br>{{ item.price }}</h2>
+        <h2>from<br />{{ item.price }}</h2>
       </li>
     </ul>
 
-    <button @click="AddToCart" type="button" class="btn btn-success">
+    <button @submit.prevent="AddToCart" type="button" class="btn btn-success">
       ADD
     </button>
   </div>
@@ -22,17 +22,20 @@
 export default {
   name: 'product',
   props: ['item'],
+
   data() {
-    return {};
+    return {
+    };
   },
   methods: {
+    
     AddToCart() {
       alert('Added to cart');
     },
-
   },
 
-  created() {},
+  created() {
+  },
 };
 </script>
 
@@ -40,7 +43,7 @@ export default {
 ul {
   list-style: none;
 }
-.btn.btn-success{
+.btn.btn-success {
   border-radius: 10px;
 }
 
@@ -53,7 +56,7 @@ ul {
   /* min-height: minmax(400px, 1fr); */
 }
 
-.product-card ul{
+.product-card ul {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;

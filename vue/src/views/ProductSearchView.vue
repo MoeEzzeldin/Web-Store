@@ -60,4 +60,10 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+  .card{
+    display: grid ;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+  }
+</style>

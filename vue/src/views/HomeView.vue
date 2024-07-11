@@ -208,7 +208,6 @@ export default {
   methods: {
     //this function makes 3 calls to get products within price ranges
     //and sets the data to the respective arrays
-    getAvgRatingPerCard() {},
     getProducts() {
       ProductService.productFilterOne()
         .then((response) => {
@@ -250,21 +249,21 @@ export default {
         .map((value) => ({ value, sort: Math.random() }))
         .sort((a, b) => a.sort - b.sort)
         .map(({ value }) => value)
-        .slice(0, 4);
+        .slice(0, 6);
     },
     randomProductsTwo() {
       return this.underFiveHundred
         .map((value) => ({ value, sort: Math.random() }))
         .sort((a, b) => a.sort - b.sort)
         .map(({ value }) => value)
-        .slice(0, 4);
+        .slice(0, 6);
     },
     randomProductsThree() {
       return this.fiveHundredPlus
         .map((value) => ({ value, sort: Math.random() }))
         .sort((a, b) => a.sort - b.sort)
         .map(({ value }) => value)
-        .slice(0, 4);
+        .slice(0, 6);
     },
   },
   created() {
@@ -293,7 +292,7 @@ section {
 .card {
   border: 4px solid darkmagenta;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 20px;
 }
 
