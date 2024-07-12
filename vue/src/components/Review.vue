@@ -1,32 +1,35 @@
 <template>
-  <div class="reviews">
-    <h3>Reviews</h3>
+  <div class="card">
+    <div class="title">
+      <h3>Product Reviews</h3>
+    </div>
     <div v-for="review in reviews" :key="review.review_id">
-      <h5>{{ review.reviewer }} | {{ review.date }}</h5>
-      <h5>{{ review.rating }}</h5>
-      <h5>{{ review.title }}</h5>
-      <p>{{ review.comment }}</p>
+
+      <div class="user">
+        <h5>{{ review.reviewer }}</h5>
+        <h5>{{ review.rating }}</h5>
+        <h5>{{ review.title }}</h5>
+      </div>
+
+      <div class="date">
+        <h5>{{ review.date }}</h5>
+      </div>
+      <div class="comment">
+        <p>{{ review.comment }}</p>
+      </div>
     </div>
     <label for="review">Review Title: </label>
-    <input
-      type="text"
-      v-model="newReview.title"
-      placeholder="Add a review"
-    />
+    <input type="text" v-model="newReview.title" placeholder="Title ..." />
 
     <label for="review">Comment: </label>
-    <input
-      type="text"
-      v-model="newReview.comment"
-      placeholder="Add a review"
-    />
+    <input type="text" v-model="newReview.comment" placeholder="comment..." />
 
-    <div>Selected: {{ newReview.rating }}</div>
     <label for="starRating">Star Rating</label>
     <select
       v-model="newReview.rating"
       id="starRating"
       name="starRating"
+      placeholder="Select rating"
       required
     >
       <option disabled value="">Please select one</option>
@@ -49,8 +52,8 @@ export default {
   props: {
     productId: {
       type: Number,
-      required: true
-    }
+      required: true,
+    },
   },
   data() {
     return {
@@ -62,7 +65,7 @@ export default {
         title: '',
         comment: '',
         rating: 0,
-      }
+      },
     };
   },
   methods: {
@@ -80,20 +83,25 @@ export default {
       ReviewService.addAReview(this.newReview)
         .then(() => {
           this.fetchReviews();
+          this.title = '';
+          this.comment = '';
+          this.rating = 0;
         })
         .catch((error) => {
           console.error(error);
         });
-    }
+    },
   },
   created() {
     this.fetchReviews();
-  }
+  },
 };
 </script>
 
 <style scoped>
-.reviews {
-  background-color: white;
-}
+  
+  .card{
+    border: 1px solid black;
+    box-shadow: 0 5px 10px black;
+  }
 </style>
